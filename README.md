@@ -2,7 +2,7 @@
 Maturitní projekt pro ukládání zápisků na servru.
 
 ## Jak spustit:
-1. Naklonujte se do našeho git repozitáře.
+1. Naklonujte se do našeho git repozitáře. Do větve devel: ```git clone -b devel --single-branch --depth 1 https://github.com/LGdrak/Zapisky.git```
 2. otevřete terminál a dostaňte se do lokace projektu Zapisky.
    
 3. přesuňte se do složky backend a vytvořte python virtuální prostředí:
