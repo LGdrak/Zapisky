@@ -18,6 +18,12 @@ Maturitní projekt pro ukládání zápisků na servru.
 
    niní lze aplikace spustit z cesty Zapisky/backend/app příkazem: ```uvicorn main:app --reload```
 
-4. přesuňte se do složky frontend: ```cd ../frontend``` a instalujte příkazem: ```npm install```
+4. přesuňte se do složky frontend: ```cd ../frontend``` a instalujte příkazem: ```sudo dnf install nodejs``` - pro fedoru/linux
+
+   ```winget install OpenJS.NodeJS.LTS``` - pro windows
+
+   ```brew install node``` - pro mac
+   
+   dále instalujte balíčky pro development frontendu: ```npm install```
 
    teď už by měl jít spustit i frontend příkazem: ```npm run dev```
