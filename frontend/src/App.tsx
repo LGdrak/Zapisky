@@ -11,7 +11,12 @@ const Login: React.FC = () => {
   
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    axios.get(`http://localhost:8000`)
+    axios.get('http://localhost:8000/', {
+    auth: {
+    username: `${username}`,
+    password: `${password}`
+  }
+  })
   .then(response => {
     setUser(response.data);
     setLoading(false);
