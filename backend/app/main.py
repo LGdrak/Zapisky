@@ -4,9 +4,11 @@ from fastapi.security import HTTPBasic, HTTPBasicCredentials
 from mysql.mysql import Base, engine
 from sqlalchemy.orm import Session
 from mysql.model import User
+import payload_validation
 from mysql.schema import InputValUser, OutputValUser
 import mysql.mysql
 from datetime import datetime
+
 
 app = FastAPI()
 
@@ -39,19 +41,20 @@ def sql_test(db:Session = Depends(mysql.mysql.get_db)):
         "message": "DB creation successful"
     }
 
-@app.post("/sql/insert")
-def insert(user: InputValUser, db:Session = Depends(mysql.mysql.get_db)):
-    new_user: User = User(name = user.name, id = datetime.utcnow().timestamp())
+def add_user_to_db(user: InputValUser, db:Session = mysql.mysql.get_db()):
+    new_user: User = User(name = user.name, id = user.id)
     db.add(new_user)
     db.commit()
     db.refresh(new_user)
-    return {
-        "message": "Inserted successfully"
-    }
 
-@app.get("/sql/get")
-def get(user: InputValUser, db: Session = Depends(mysql.mysql.get_db)):
-    return db.query(User).first()
+
+def validate_new_user(email: str):
+    db: Session = mysql.mysql.get_db()
+    if db.query(User).filter_by(id=email).first() is not None:
+        return False
+    return True
+
+
 
 
 @app.get("/")
@@ -59,17 +62,19 @@ def read_root():
     print("Receiving request for hello world!")
     return {"Hello": "World"}
 
-@app.get("/items/{item_id}")
-def read_item(item_id: int, q: str | None = None):
-    return {"item_id": item_id, "q": q}
 
-@app.post("/create_account")
-def create_account(email: str, username: str, password: str):
-    if not search_for_user(email):
-        write_to_db({"username": username, "password": password})
+@app.put("/create_account")
+def create_account(params: payload_validation.InputCreateUser):
+    if validate_new_user(params.params["email"]):
+        new_user: InputValUser = InputValUser(id=params.params["email"], name=params.params["username"], password=params.params["password"])
+        add_user_to_db(new_user)
     else:
         raise HTTPException(status_code=409, detail="Email already in use.")
 
-@app.get("/users")
-def read_users():
-    return users 
+
+@app.get("/login")
+def login(auth: payload_validation.InputLoginUser):
+    db: Session = mysql.mysql.get_db()
+    if db.query(User).filter_by(id=auth.auth["email"], password=auth.auth["password"]).first() is None:
+        raise HTTPException(status_code=409, detail="Incorrect email or password.")
+

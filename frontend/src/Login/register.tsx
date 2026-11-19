@@ -23,7 +23,7 @@ const Login: React.FC = () => {
     e.preventDefault();
     setError("");
     setLoading(true);
-    axios.get('http://localhost:8000', {
+    axios.get('http://localhost:8000/login', {
       auth: {
         username: `${username}`,
         password: `${password}`

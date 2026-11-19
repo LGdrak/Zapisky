@@ -55,9 +55,9 @@ export const UsernameField = ({ form }: { form: InputFormState }) => {
 
     return (
         <div className="ring-2 ring-outline w-11/12">
-            <p className="form-cell-text my-1 w-40" id="usernameDescription">Jméno na stránce</p>
+            <p className="form-cell-text my-1 w-40" id="usernameDescription">Email na stránce</p>
             <div className="input-flex">
-              <label className="w-30" htmlFor="username">Jméno:</label>
+              <label className="w-30" htmlFor="username">Email:</label>
               <input
                 id="username"
                 maxLength={40}

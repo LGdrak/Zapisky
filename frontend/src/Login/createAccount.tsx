@@ -18,7 +18,7 @@ const CreateAccount: React.FC = () => {
     setError("");
     if(usernameError === null && emailError === null && passwordError === null && passwordAgainError === null){
       setLoading(true);
-      axios.put('http://localhost:8000', {
+      axios.put('http://localhost:8000/create_account', {
         params: {
           username: `${username}`,
           email: `${email}`,
