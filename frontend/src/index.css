@@ -9,8 +9,9 @@
   --backgroun-400: oklch(70.8% 0 none);
   --text-base: oklch(30% 0 none);
   --base-highlight: oklch(48.407% 0.27372 274.371);
-  --outline: oklch(70.8% 0 none);
-  --color-h1: oklch(15% 0 none);
+  --outline: oklch(51.017% 0.26191 276.948 / 0.896);
+  --color-h1: oklch(46.968% 0.28914 271.288);
+  --input-outline: oklch(34.458% 0.00004 271.152);
 }
 .dark {
   --base-blue: oklch(37.723% 0.17262 279.407);
@@ -19,9 +20,9 @@
   --background-400: oklch(25.763% 0.05302 267.301);
   --text-base: oklch(92.2% 0 none);
   --base-highlight: oklch(48.788% 0.24541 277.369);
-  --outline: oklch(43.9% 0 none);
+  --outline: oklch(51.017% 0.26191 276.948 / 0.896);
   --color-h1: oklch(98% 0 none);
-
+  --input-outline: oklch(75.565% 0.00226 15.113);
 }
 
 @theme{
@@ -36,7 +37,8 @@
   --color-text-base: var(--text-base);
   --color-base-h: var(--base-highlight);
   --color-outline: var(--outline);
-  --color-color-h1: var(--color-h1)
+  --color-color-h1: var(--color-h1);
+  --color-input-outline: var(--input-outline);
 }
 
 /* General Reset */

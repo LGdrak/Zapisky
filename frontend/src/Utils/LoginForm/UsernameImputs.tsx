@@ -61,7 +61,7 @@ export const UsernameField = ({ form }: { form: InputFormState }) => {
               <input
                 id="username"
                 maxLength={40}
-                className="m-2 mb-4 ring-2 focus:ring-base-h dark:ring-neutral-200"
+                className="m-2 mb-4 ring-2 focus:ring-base-h ring-input-outline"
                 type="text"
                 value={username}
                 onChange={(e) => filterUsername(e)}
@@ -141,7 +141,7 @@ export const PasswordField = ({ form, hideInstructions = false }: { form: InputF
               <input
                 id="password"
                 maxLength={30}
-                className="m-2 mt-4 mb-4 ring-2 focus:ring-base-h dark:ring-neutral-200"
+                className="m-2 mt-4 mb-4 ring-2 focus:ring-base-h ring-input-outline"
                 type={passwordType}
                 value={password}
                 onChange={(e) => filterPassword(e)}
@@ -209,7 +209,7 @@ export const PasswordFieldAgain = ({ form }: { form: InputFormState }) => {
               <input
                 id="passwordAgain"
                 maxLength={30}
-                className="m-2 mb-4 ring-2 focus:ring-base-h dark:ring-neutral-200"
+                className="m-2 mb-4 ring-2 focus:ring-base-h ring-input-outline"
                 type={passwordTypeAgain}
                 value={passwordAgain}
                 onChange={(e) => filterPasswordAgain(e)}
@@ -267,7 +267,7 @@ export const EmailField = ({ form }: { form: InputFormState }) => {
             <input
             id="email"
             maxLength={40}
-            className="m-2 mb-4 ring-2 focus:ring-base-h dark:ring-neutral-200"
+            className="m-2 mb-4 ring-2 focus:ring-base-h ring-input-outline"
             type="text"
             value={email}
             onChange={(e) => filterEmail(e)}
